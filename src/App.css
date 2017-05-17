@@ -3,14 +3,21 @@
     max-height: 800px;
     max-width: 400px;
     min-height: 400px;
-    background-color: grey;
+    background-color: #D6D7DA;
+    font-family: Arial;
+}
+
+.content {
+    margin-left: 10px;
 }
 
 .form-header {
     padding: 10px;
+    margin-bottom: 40px;
     height: 40px;
     background-color: #1874CD;
     text-align: center;
+    box-shadow: 0px 5px 4px #91918b;
 }
 
 .form-header li {
@@ -44,4 +51,9 @@
 
 .form-input-field {
     display: flex;
+    padding-bottom: 30px;
+}
+
+.form-input-field input {
+    width: 90%;
 }
