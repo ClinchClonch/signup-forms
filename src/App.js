@@ -1,18 +1,39 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { FormHeader } from "./components/FormHeader"
+import { FormInput } from "./components/FormInput"
+import { FormCheckbox } from "./components/FormCheckbox"
+import { FormButton } from "./components/FormButton"
 
 class App extends Component {
+  state = {
+    textInput: ""
+  }
+
+  handleInputChange = (evt) => {
+    this.setState({
+      textInput: evt.target.value
+    })
+  }
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+  }
+
   render() {
+    const headerTexts = [
+      {id: 1, name: "Form"},
+      {id: 2, name: "Review"},
+      {id: 3, name: "Final"}
+    ]
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <FormHeader headerTexts={headerTexts}></FormHeader>
+        <FormInput handleInputChange={this.handleInputChange} handleSubmit={this.handleSubmit} labelText="Name"></FormInput>
+        <FormInput handleInputChange={this.handleInputChange} handleSubmit={this.handleSubmit} labelText="Company"></FormInput>
+        <FormCheckbox checkBoxText="I agree to the terms of service" />
+        <FormButton buttonText="Submit"></FormButton>
       </div>
     );
   }
