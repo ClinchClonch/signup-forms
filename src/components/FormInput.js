@@ -7,7 +7,7 @@ export const FormInput = (props) => {
             <form className="form-input-field" onSubmit={props.handleSubmit}>
                 <input type="text"
                     onChange={props.handleInputChange}
-                    value={props.defaultText} />
+                    placeholder={props.placeholder} />
             </form>
         </div>
     )

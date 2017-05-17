@@ -26,23 +26,25 @@
     height: 100%;
     text-align: center;
     color: white;
+    font-size: 18px;
 }
 
 .form-checkbox-text {
     display: flex;
     float: left;
+    font-size: 14px;
 }
 
 .form-checkbox {
     display: flex;
     margin-right: 20px;
     float: right;
-
 }
 
 .form-button {
     float: right;
     line-height: 20px;
+    box-shadow: 0px 1px 2px #91918b;
 }
 
 .form-input-label {
