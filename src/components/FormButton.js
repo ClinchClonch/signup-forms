@@ -1,7 +1,14 @@
-import React from "react"
+import React, { Component } from "react";
 
-export const FormButton = (props) => {
-    return (
-        <button type="button" className="form-button">{props.buttonText}</button>
-    )
+export class FormButton extends Component {
+    render() {
+        const buttonStyles = {
+            lineHeight: "20px",
+            boxShadow: "0px 1px 3px #91918b"
+        }
+
+        return (
+            <button type="button" className="form-button" style={buttonStyles}>{this.props.buttonText}</button>
+        )
+    }
 }

@@ -21,15 +21,15 @@ class App extends Component {
     })
   }
 
+// TODO: Använd för knapparna
+  validateButtonClick = (evt) => {
+    if (!this.state.isChecked) {
+      this.handleSubmit(evt);
+    }
+  }
+  
   handleSubmit = (evt) => {
     evt.preventDefault();
-  }
-
-  attemptButtonActivation = (evt) => {
-    console.log("Clicked!")
-    if (this.state.isChecked) {
-
-    }
   }
 
   render() {

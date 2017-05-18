@@ -1,13 +1,18 @@
-import React from "react"
+import React, { Component } from "react";
 
-export const FormCheckbox = (props) => {
-    return (
-        <div>
-            <label className="form-checkbox-text">{props.checkBoxText}</label>
-            <input type="checkbox"
-                className="form-checkbox"
-                onChange={props.handleCheckboxChange}
-                checked={props.checked} />
-        </div>
-    )
+export class FormCheckbox extends Component {
+    render() {
+        const textStyles = {
+            fontSize: 14
+        }
+
+        return (
+            <div className="form-checkbox">
+                <label style={textStyles}>{this.props.checkBoxText}</label>
+                <input type="checkbox"
+                    onChange={this.props.handleCheckboxChange}
+                    checked={this.props.checked} />
+            </div>
+        )
+    }
 }

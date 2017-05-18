@@ -1,5 +1,4 @@
 .App {
-    text-align: center;
     max-height: 800px;
     max-width: 400px;
     min-height: 400px;
@@ -11,31 +10,12 @@
     margin-left: 10px;
 }
 
-.form-header {
-    padding: 10px;
-    margin-bottom: 40px;
-    height: 40px;
-    background-color: #1874CD;
-    text-align: center;
-    box-shadow: 0px 5px 4px #91918b;
-}
-
-.form-header li {
-    display: inline-flex;
-    width: 33%;
-    height: 100%;
-    text-align: center;
-    color: white;
-    font-size: 18px;
-}
-
-.form-checkbox-text {
+.form-checkbox label {
     display: flex;
     float: left;
-    font-size: 14px;
 }
 
-.form-checkbox {
+.form-checkbox input {
     display: flex;
     margin-right: 20px;
     float: right;
@@ -43,19 +23,8 @@
 
 .form-button {
     float: right;
-    line-height: 20px;
-    box-shadow: 0px 1px 2px #91918b;
 }
 
-.form-input-label {
+.form-input label {
     display: flex;
-}
-
-.form-input-field {
-    display: flex;
-    padding-bottom: 30px;
-}
-
-.form-input-field input {
-    width: 90%;
 }
