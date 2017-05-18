@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class FormHeader extends Component {
     render() {
         const headerStyles = {
-            height: 40,
+            height: 50,
             backgroundColor: "#1874CD",
             boxShadow: "0px 5px 4px #91918b"
         }

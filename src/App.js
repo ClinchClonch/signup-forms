@@ -1,17 +1,27 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom"
-import { FormButton, FormCheckbox, FormHeader, FormInput } from "./components"
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { FormButton, FormCheckbox, FormHeader, FormInput } from "./components";
+import { createUser, loadUser } from "./lib/formService";
 import "./App.css";
+const uuid = require("uuid/v1")
+
 
 class App extends Component {
   state = {
-    textInput: "",
+    userName: "",
+    userCompany: "",
     isChecked: false
   }
 
-  handleInputChange = (evt) => {
+  handleNameInputChange = (evt) => {
     this.setState({
-      textInput: evt.target.value
+      userName: evt.target.value
+    })
+  }
+
+  handleCompanyInputChange = (evt) => {
+    this.setState({
+      userCompany: evt.target.value
     })
   }
 
@@ -21,16 +31,41 @@ class App extends Component {
     })
   }
 
-// TODO: Använd för knapparna
+  // TODO: Använd för knapparna
   validateButtonClick = (evt) => {
-    if (!this.state.isChecked) {
-      this.handleSubmit(evt);
-    }
+    // if (validateInputs()) {
+    //   this.handleSubmit(evt);
+    // }
   }
-  
+
+  // validateInputs = () => {
+  //   return !this.state.isChecked
+  //     // && this.state.userName.trim().length < 1
+  //     // && this.state.userCompany.trim().length < 1)
+  // }
+
   handleSubmit = (evt) => {
     evt.preventDefault();
   }
+
+  submitUser = (evt) => {
+    const user = {
+      id: uuid(),
+      name: this.state.userName,
+      company: this.state.userCompany,
+      acceptedTerms: this.state.isChecked
+    };
+    createUser(user);
+  }
+
+  // TODO: Fixa klart
+  loadUser = (id, evt) => {
+    let user = loadUser(id);
+    this.setState = {
+      userName: user.userName
+    }
+  }
+
 
   render() {
     const headerTexts = [
@@ -46,13 +81,13 @@ class App extends Component {
           <FormHeader headerTexts={headerTexts}></FormHeader>
           <div className="content">
             <FormInput
-              handleInputChange={this.handleInputChange}
+              handleInputChange={this.handleNameInputChange}
               handleSubmit={this.handleSubmit}
               placeholder="Your name"
               labelText="Name">
             </FormInput>
             <FormInput
-              handleInputChange={this.handleInputChange}
+              handleInputChange={this.handleCompanyInputChange}
               handleSubmit={this.handleSubmit}
               placeholder="Your company"
               labelText="Company">
@@ -66,7 +101,7 @@ class App extends Component {
                   checkBoxText={checkBoxText}
                 />
                 <Link to="/review">
-                  <FormButton onclick={this.attemptButtonActivation} buttonText="Review"></FormButton>
+                  <FormButton buttonText="Review"></FormButton>
                 </Link>
               </div>
             )} />
@@ -77,7 +112,7 @@ class App extends Component {
                   <FormButton buttonText="Back"></FormButton>
                 </Link>
                 <Link to="/final">
-                  <FormButton buttonText="Submit"></FormButton>
+                  <FormButton handleClick={this.submitUser} buttonText="Submit"></FormButton>
                 </Link>
               </div>
             )} />

@@ -1,6 +1,7 @@
 .App {
-    max-height: 800px;
     max-width: 400px;
+    max-height: 800px;
+    min-width: 400px;
     min-height: 400px;
     background-color: #D6D7DA;
     font-family: Arial;
@@ -27,4 +28,9 @@
 
 .form-input label {
     display: flex;
+}
+
+.form-button {
+    position: relative;
+    top: 20px;
 }
