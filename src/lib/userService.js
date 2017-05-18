@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080/users"
+const baseUrl = "http://localhost:8080/users/"
 
 export const createUser = (user) => {
     return fetch(baseUrl, {
@@ -12,6 +12,6 @@ export const createUser = (user) => {
 }
 
 export const loadUser = (id) => {
-    return fetch(baseUrl)
+    return fetch(baseUrl + id)
         .then(res => res.json())
 }

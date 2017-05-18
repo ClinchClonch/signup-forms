@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { FormButton, FormCheckbox, FormHeader, FormInput } from "./components";
-import { createUser, loadUser } from "./lib/formService";
+import { createUser, loadUser } from "./lib/userService";
 import "./App.css";
-const uuid = require("uuid/v1")
 
+const uuid = require("uuid/v1")
 
 class App extends Component {
   state = {
+    id: uuid(),
     userName: "",
     userCompany: "",
-    isChecked: false
+    isChecked: false,
   }
 
   handleNameInputChange = (evt) => {
@@ -25,7 +26,7 @@ class App extends Component {
     })
   }
 
-  handleCheckboxChange = (evt) => {
+  handleCheckboxChange = () => {
     this.setState({
       isChecked: !this.state.isChecked
     })
@@ -44,28 +45,55 @@ class App extends Component {
   //     // && this.state.userCompany.trim().length < 1)
   // }
 
-  handleSubmit = (evt) => {
+  preventPageRefresh = (evt) => {
     evt.preventDefault();
   }
 
-  submitUser = (evt) => {
+  submitUser = () => {
     const user = {
-      id: uuid(),
+      id: this.state.id,
       name: this.state.userName,
       company: this.state.userCompany,
       acceptedTerms: this.state.isChecked
     };
+    this.setState({
+      id: user.id
+    })
     createUser(user);
   }
 
   // TODO: Fixa klart
-  loadUser = (id, evt) => {
-    let user = loadUser(id);
-    this.setState = {
-      userName: user.userName
+  getStoredUser = (id) => {
+    let user = loadUser("497870b0-3c11-11e7-ac54-c1affd270ae5");
+    console.log("loadedUser:")
+    console.log(user)
+    if (user) {
+      this.setState = {
+        id: user.id,
+        userName: user.name,
+        userCompany: user.company,
+        acceptedTerms: user.acceptedTerms
+      }
+      console.log("state:")
+      console.log(this.state);
     }
   }
 
+  renderFinalView = () => {
+    let storedId = localStorage.getItem("userId");
+    if (storedId) {
+      console.log(storedId)
+      this.getStoredUser(storedId);
+      localStorage.setItem("userId", this.state.id)
+    }
+
+    return (
+      <FormCheckbox
+        handleCheckboxChange={this.handleCheckboxChange}
+        checked={this.state.isChecked}
+        checkBoxText={"I agree to the terms of service"}
+      />)
+  }
 
   render() {
     const headerTexts = [
@@ -73,7 +101,6 @@ class App extends Component {
       { id: 2, name: "Review" },
       { id: 3, name: "Final" }
     ]
-    const checkBoxText = "I agree to the terms of service";
 
     return (
       <Router>
@@ -82,13 +109,13 @@ class App extends Component {
           <div className="content">
             <FormInput
               handleInputChange={this.handleNameInputChange}
-              handleSubmit={this.handleSubmit}
+              handleSubmit={this.preventPageRefresh}
               placeholder="Your name"
               labelText="Name">
             </FormInput>
             <FormInput
               handleInputChange={this.handleCompanyInputChange}
-              handleSubmit={this.handleSubmit}
+              handleSubmit={this.preventPageRefresh}
               placeholder="Your company"
               labelText="Company">
             </FormInput>
@@ -98,7 +125,7 @@ class App extends Component {
                 <FormCheckbox
                   handleCheckboxChange={this.handleCheckboxChange}
                   checked={this.state.isChecked}
-                  checkBoxText={checkBoxText}
+                  checkBoxText={"I agree to the terms of service"}
                 />
                 <Link to="/review">
                   <FormButton buttonText="Review"></FormButton>
@@ -117,13 +144,7 @@ class App extends Component {
               </div>
             )} />
 
-            <Route path="/final" render={() => (
-              <FormCheckbox
-                handleCheckboxChange={this.handleCheckboxChange}
-                checked={this.state.isChecked}
-                checkBoxText={checkBoxText}
-              />
-            )} />
+            <Route path="/final" render={() => (this.renderFinalView())} />
           </div>
         </div>
       </Router>
