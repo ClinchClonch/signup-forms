@@ -11,6 +11,7 @@ export class FormButton extends Component {
 
         return (
             <button type="button"
+                disabled={this.props.disabled}
                 onClick={this.props.handleClick}
                 className="form-button"
                 style={buttonStyles}>

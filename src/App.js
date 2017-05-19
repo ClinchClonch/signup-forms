@@ -15,7 +15,7 @@ class App extends Component {
       userCompany: "",
       isChecked: false
     }
-  }
+  };
 
   componentDidMount() {
     let storedId = sessionStorage.getItem("userId");
@@ -31,29 +31,29 @@ class App extends Component {
         }
       });
     }
-  }
+  };
 
   handleNameInputChange = (evt) => {
     this.setState({
       userName: evt.target.value
     })
-  }
+  };
 
   handleCompanyInputChange = (evt) => {
     this.setState({
       userCompany: evt.target.value
     })
-  }
+  };
 
   handleCheckboxChange = () => {
     this.setState({
       isChecked: !this.state.isChecked
     })
-  }
+  };
 
   preventPageRefresh = (evt) => {
     evt.preventDefault();
-  }
+  };
 
   submitUser = () => {
     const user = {
@@ -64,7 +64,7 @@ class App extends Component {
     };
     sessionStorage.setItem("userId", user.id);
     createUser(user);
-  }
+  };
 
   renderFinalView = ({ isChecked }) => {
     return (
@@ -72,15 +72,20 @@ class App extends Component {
         handleCheckboxChange={this.handleCheckboxChange}
         checked={isChecked}
         checkBoxText={"I agree to the terms of service"}
-      />)
-  }
+      />
+      )
+  };
 
   render() {
     const headerTexts = [
       { id: 1, name: "Form" },
       { id: 2, name: "Review" },
       { id: 3, name: "Final" }
-    ]
+    ];
+    const isFormFilledIn =
+      this.state.userName.trim().length > 0
+      && this.state.userCompany.trim().length > 0
+      && this.state.isChecked;
 
     return (
       <Router>
@@ -110,7 +115,7 @@ class App extends Component {
                   checkBoxText={"I agree to the terms of service"}
                 />
                 <Link to="/review">
-                  <FormButton buttonText="Review"></FormButton>
+                  <FormButton disabled={!isFormFilledIn} buttonText="Review"></FormButton>
                 </Link>
               </div>
             )} />
@@ -118,7 +123,7 @@ class App extends Component {
             <Route path="/review" render={() => (
               <div>
                 <Link to="/final">
-                  <FormButton handleClick={this.submitUser} buttonText="Submit"></FormButton>
+                  <FormButton disabled={!isFormFilledIn} handleClick={this.submitUser} buttonText="Submit"></FormButton>
                 </Link>
                 <Link to="/">
                   <FormButton buttonText="Back"></FormButton>
