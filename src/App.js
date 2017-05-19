@@ -19,16 +19,16 @@ class App extends Component {
 
   componentDidMount() {
     let storedId = sessionStorage.getItem("userId");
-    let user;
     if (storedId) {
-      user = this.retrieveStoredUser(storedId); // TODO: Fix promise issues
-    }
-    if (user) {
-      this.setState({
-        id: user.id,
-        userName: user.name,
-        userCompany: user.company,
-        isChecked: user.acceptedTerms
+      loadUser(storedId).then(user => {
+        if (user && window.location.pathname.startsWith("/final")) {
+          this.setState({
+            id: user.id,
+            userName: user.name,
+            userCompany: user.company,
+            isChecked: user.acceptedTerms
+          });
+        }
       });
     }
   }
@@ -64,11 +64,6 @@ class App extends Component {
     };
     sessionStorage.setItem("userId", user.id);
     createUser(user);
-  }
-
-  retrieveStoredUser = (id) => {
-    loadUser(id)
-      .then((user) => { return user; });
   }
 
   renderFinalView = ({ isChecked }) => {
