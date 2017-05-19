@@ -9,6 +9,12 @@
 
 .content {
     margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-checkbox {
+    position: relative;
+    top: 20px;
 }
 
 .form-checkbox label {
@@ -17,20 +23,22 @@
 }
 
 .form-checkbox input {
-    display: flex;
-    margin-right: 20px;
+    margin-right: 15px;
     float: right;
+    
 }
 
 .form-button {
     float: right;
 }
 
-.form-input label {
-    display: flex;
+.form-input {
+    position: relative;
+    top: 20px;
+    padding-bottom: 20px;
 }
 
 .form-button {
     position: relative;
-    top: 20px;
+    top: 60px;
 }

@@ -7,11 +7,30 @@ import "./App.css";
 const uuid = require("uuid/v1")
 
 class App extends Component {
-  state = {
-    id: uuid(),
-    userName: "",
-    userCompany: "",
-    isChecked: false,
+  constructor() {
+    super();
+    this.state = {
+      id: uuid(),
+      userName: "",
+      userCompany: "",
+      isChecked: false
+    }
+  }
+
+  componentDidMount() {
+    let storedId = sessionStorage.getItem("userId");
+    let user;
+    if (storedId) {
+      user = this.retrieveStoredUser(storedId); // TODO: Fix promise issues
+    }
+    if (user) {
+      this.setState({
+        id: user.id,
+        userName: user.name,
+        userCompany: user.company,
+        isChecked: user.acceptedTerms
+      });
+    }
   }
 
   handleNameInputChange = (evt) => {
@@ -32,19 +51,6 @@ class App extends Component {
     })
   }
 
-  // TODO: Använd för knapparna
-  validateButtonClick = (evt) => {
-    // if (validateInputs()) {
-    //   this.handleSubmit(evt);
-    // }
-  }
-
-  // validateInputs = () => {
-  //   return !this.state.isChecked
-  //     // && this.state.userName.trim().length < 1
-  //     // && this.state.userCompany.trim().length < 1)
-  // }
-
   preventPageRefresh = (evt) => {
     evt.preventDefault();
   }
@@ -56,41 +62,20 @@ class App extends Component {
       company: this.state.userCompany,
       acceptedTerms: this.state.isChecked
     };
-    this.setState({
-      id: user.id
-    })
+    sessionStorage.setItem("userId", user.id);
     createUser(user);
   }
 
-  // TODO: Fixa klart
-  getStoredUser = (id) => {
-    let user = loadUser("497870b0-3c11-11e7-ac54-c1affd270ae5");
-    console.log("loadedUser:")
-    console.log(user)
-    if (user) {
-      this.setState = {
-        id: user.id,
-        userName: user.name,
-        userCompany: user.company,
-        acceptedTerms: user.acceptedTerms
-      }
-      console.log("state:")
-      console.log(this.state);
-    }
+  retrieveStoredUser = (id) => {
+    loadUser(id)
+      .then((user) => { return user; });
   }
 
-  renderFinalView = () => {
-    let storedId = localStorage.getItem("userId");
-    if (storedId) {
-      console.log(storedId)
-      this.getStoredUser(storedId);
-      localStorage.setItem("userId", this.state.id)
-    }
-
+  renderFinalView = ({ isChecked }) => {
     return (
       <FormCheckbox
         handleCheckboxChange={this.handleCheckboxChange}
-        checked={this.state.isChecked}
+        checked={isChecked}
         checkBoxText={"I agree to the terms of service"}
       />)
   }
@@ -111,13 +96,15 @@ class App extends Component {
               handleInputChange={this.handleNameInputChange}
               handleSubmit={this.preventPageRefresh}
               placeholder="Your name"
-              labelText="Name">
+              labelText="Name"
+              value={this.state.userName}>
             </FormInput>
             <FormInput
               handleInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
               placeholder="Your company"
-              labelText="Company">
+              labelText="Company"
+              value={this.state.userCompany}>
             </FormInput>
 
             <Route exact={true} path="/" render={() => (
@@ -135,16 +122,16 @@ class App extends Component {
 
             <Route path="/review" render={() => (
               <div>
-                <Link to="/">
-                  <FormButton buttonText="Back"></FormButton>
-                </Link>
                 <Link to="/final">
                   <FormButton handleClick={this.submitUser} buttonText="Submit"></FormButton>
+                </Link>
+                <Link to="/">
+                  <FormButton buttonText="Back"></FormButton>
                 </Link>
               </div>
             )} />
 
-            <Route path="/final" render={() => (this.renderFinalView())} />
+            <Route path="/final" render={() => (this.renderFinalView(this.state))} />
           </div>
         </div>
       </Router>

@@ -10,7 +10,12 @@ export class FormButton extends Component {
         }
 
         return (
-            <button type="button" onClick={this.props.handleClick} className="form-button" style={buttonStyles}>{this.props.buttonText}</button>
+            <button type="button"
+                onClick={this.props.handleClick}
+                className="form-button"
+                style={buttonStyles}>
+                {this.props.buttonText}
+            </button>
         )
     }
 }
