@@ -8,7 +8,7 @@ To download dependencies, run the following in the project root:
 ### Start database
 To start the database, run the following in the project root:
 
-### `json-server -p 8080 --watch db.json`
+### `npm run server`
 
 You can find the database entries in the file db.json in the project root. 
 One user is saved for every Submit done.
