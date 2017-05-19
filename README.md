@@ -20,7 +20,7 @@ To start the application, run the following in the project root:
 
 
 
-### Disclaimer
+## Disclaimer
 
 This is a work in progress and is not yet complete.
 
