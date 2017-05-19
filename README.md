@@ -24,12 +24,12 @@ To start the application, run the following in the project root:
 
 This is a work in progress and is not yet complete.
 
-###Major functionality remaining
+### Major functionality remaining
 Fix it so that users can be retrieved from the database and the state set towards it.
 Fix validation of input fields and the checkbox, preventing button clicks unless input fields.trim().length > 1 and isChecked === true.
 Write unit tests.
 Replace the mock database json-server with a proper MongoDB setup.
 
-###Minor functionality remaining
+### Minor functionality remaining
 Style the application according to design.
 
