@@ -3,8 +3,8 @@
     max-height: 800px;
     min-width: 400px;
     min-height: 400px;
-    background-color: #D6D7DA;
-    font-family: Arial;
+    background-color: #EEEEEE;
+    font-family: Calibri;
 }
 
 .content {
@@ -14,7 +14,7 @@
 
 .form-checkbox {
     position: relative;
-    top: 20px;
+    top: 35px;
 }
 
 .form-checkbox label {
@@ -34,11 +34,11 @@
 
 .form-input {
     position: relative;
-    top: 20px;
+    top: 30px;
     padding-bottom: 20px;
 }
 
 .form-button {
     position: relative;
-    top: 60px;
+    top: 80px;
 }

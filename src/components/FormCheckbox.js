@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class FormCheckbox extends Component {
     render() {
         const textStyles = {
-            fontSize: 14
+            fontSize: 16
         }
 
         return (

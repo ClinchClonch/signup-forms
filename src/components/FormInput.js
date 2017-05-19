@@ -3,12 +3,20 @@ import React, { Component } from "react";
 export class FormInput extends Component {
     render() {
         const formLabelStyles = {
-            fontSize: 12
+            fontSize: 14,
+            fontFamily: "Calibri"
         }
 
         const formInputStyles = {
             width: "95%",
-            fontSize: 20
+            fontSize: 18,
+            border: "none",
+            outline: "none",
+            paddingTop: 10,
+            borderBottom: "solid #E0E0E0",
+            borderBottomWidth: 2,
+            backgroundColor: "#EEEEEE",
+            color: "grey"
         }
 
         return (

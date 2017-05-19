@@ -5,7 +5,7 @@ export class FormHeader extends Component {
         const headerStyles = {
             height: 50,
             backgroundColor: "#1874CD",
-            boxShadow: "0px 5px 4px #91918b"
+            boxShadow: "0px 5px 4px #BDBDBD"
         }
 
         const ulStyles = {
@@ -19,8 +19,9 @@ export class FormHeader extends Component {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "white",
-            fontSize: 18
+            color: "#FAFAFA",
+            fontSize: 18,
+            fontWeight: "bold"
         }
 
         return (
