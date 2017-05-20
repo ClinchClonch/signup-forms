@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class FormInput extends Component {
     render() {
@@ -33,4 +34,12 @@ export class FormInput extends Component {
             </div>
         )
     }
-}
+};
+
+FormInput.propTypes = {
+    labelText: PropTypes.string,
+    handleSubmit: PropTypes.func,
+    handleInputChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    value: PropTypes.string.isRequired
+};

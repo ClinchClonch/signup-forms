@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class FormButton extends Component {
     render() {
@@ -21,4 +22,10 @@ export class FormButton extends Component {
             </button>
         )
     }
-}
+};
+
+FormButton.propTypes = {
+    disabled: PropTypes.bool,
+    handleClick: PropTypes.func,
+    buttonText: PropTypes.string
+};

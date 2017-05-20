@@ -4339,7 +4339,7 @@ promise@7.1.1, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -4517,6 +4517,10 @@ react-scripts@0.9.5:
     whatwg-fetch "2.0.2"
   optionalDependencies:
     fsevents "1.0.17"
+
+react-types@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-types/-/react-types-0.1.0.tgz#f64c8c70b4aedfb66ab8d4def138e284cbc33380"
 
 react@^15.5.4:
   version "15.5.4"

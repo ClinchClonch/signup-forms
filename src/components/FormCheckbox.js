@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class FormCheckbox extends Component {
     render() {
@@ -15,4 +16,10 @@ export class FormCheckbox extends Component {
             </div>
         )
     }
-}
+};
+
+FormCheckbox.propTypes = {
+    checkBoxText: PropTypes.string,
+    handleCheckboxChange: PropTypes.func,
+    checked: PropTypes.bool
+};
