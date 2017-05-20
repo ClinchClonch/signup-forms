@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { FormHeaderItem } from "./";
 
 export class FormHeader extends Component {
     render() {
@@ -15,28 +16,28 @@ export class FormHeader extends Component {
             padding: 0
         };
 
-        const liStyles = {
-            width: "33.333%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#FAFAFA",
-            fontSize: 18,
-            fontWeight: "bold"
-        };
-
         return (
             <div className="form-header" style={headerStyles}>
                 <ul style={ulStyles}>
-                    {this.props.headerTexts.map((item) => {
-                        return <li key={item.id} style={liStyles}>{item.name}</li>
-                    })}
+                    <FormHeaderItem
+                        text={this.props.headerTexts.first}
+                        style={this.props.style.first}>
+                    </FormHeaderItem>
+                    <FormHeaderItem
+                        text={this.props.headerTexts.second}
+                        style={this.props.style.second}>
+                    </FormHeaderItem>
+                    <FormHeaderItem
+                        text={this.props.headerTexts.third}
+                        style={this.props.style.third}>
+                    </FormHeaderItem>
                 </ul>
             </div>
         )
     }
-};
+}
 
 FormHeader.propTypes = {
-    headerTexts: PropTypes.array
+    headerTexts: PropTypes.object,
+    style: PropTypes.object
 };

@@ -1,11 +1,31 @@
 import React, { Component } from "react";
 import { FormCheckbox, FormHeader, FormInput } from "../";
+import { headerTexts } from "../../lib/utils"
+import PropTypes from "prop-types";
 
 export class FinalPage extends Component {
   render() {
+    const headerStyles = {
+      first: {
+        borderBottom: "solid #1874CD",
+        color: "#FAFAFA"
+      },
+      second: {
+        borderBottom: "solid #1874CD",
+        color: "#FAFAFA"
+      },
+      third: {
+        borderBottom: "solid #1A237E",
+        color: "#1A237E"
+      }
+    };
+
     return (
       <div>
-        <FormHeader headerTexts={this.props.headerTexts}></FormHeader>
+        <FormHeader
+          headerTexts={headerTexts("Form", "Review", "Final")}
+          style={headerStyles}>
+        </FormHeader>
         <div className="content">
           <FormInput
             handleInputChange={this.props.handleNameInputChange}
@@ -29,3 +49,11 @@ export class FinalPage extends Component {
     )
   }
 }
+
+FinalPage.propTypes = {
+  appState: PropTypes.object.isRequired,
+  handleNameInputChange: PropTypes.func.isRequired,
+  handleCompanyInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleCheckboxChange: PropTypes.func.isRequired
+};

@@ -17,11 +17,6 @@ class App extends Component {
     }
   };
 
-  getHeaderTexts = () => {
-    return [{ id: 1, name: "Form" }, { id: 2, name: "Review" }, { id: 3, name: "Final" }
-    ];
-  }
-
   isFormFilledIn = () => {
     return this.state.userName.trim().length > 0
       && this.state.userCompany.trim().length > 0
@@ -32,7 +27,7 @@ class App extends Component {
     let storedId = sessionStorage.getItem("userId");
     if (storedId) {
       loadUser(storedId).then(user => {
-        if (user && window.location.pathname.endsWith("/final")) {
+        if (user && window.location.pathname.startsWith("/final")) {
           this.setState({
             id: user.id,
             userName: user.name,
@@ -87,9 +82,8 @@ class App extends Component {
               handleNameInputChange={this.handleNameInputChange}
               handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
-              handleClick={this.isFormFilledIn()}
-              headerTexts={this.getHeaderTexts()}
               handleCheckboxChange={this.handleCheckboxChange}
+              disabled={this.isFormFilledIn()}
             ></FormPage>
           )} />
 
@@ -99,8 +93,8 @@ class App extends Component {
               handleNameInputChange={this.handleNameInputChange}
               handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
-              handleClick={this.isFormFilledIn()}
-              headerTexts={this.getHeaderTexts()}
+              handleClick={this.submitUser}
+              disabled={this.isFormFilledIn()}
             ></ReviewPage>
           )} />
 
@@ -110,8 +104,8 @@ class App extends Component {
               handleNameInputChange={() => { }}
               handleCompanyInputChange={() => { }}
               handleSubmit={this.preventPageRefresh}
-              headerTexts={this.getHeaderTexts()}
               handleCheckboxChange={() => { }}
+              disabled={this.isFormFilledIn()}
             ></FinalPage>
           )} />
         </div>
