@@ -23,14 +23,3 @@ To start the application, run the following in the project root:
 ## Disclaimer
 
 This is a work in progress and is not yet complete.
-
-### Major functionality remaining
-
-Write unit tests.
-
-Replace the mock database json-server with a proper MongoDB setup.
-
-### Minor functionality remaining
-Style it by moving buttons to correct locations and track the current active stage in the header by changing the border-bottom to another color for the active view.
-
-Prevent users from editing the text fields in any view but the first.
