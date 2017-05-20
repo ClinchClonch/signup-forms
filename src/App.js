@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import { FormButton, FormCheckbox, FormHeader, FormInput } from "./components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { FormPage, ReviewPage, FinalPage } from "./components/pages";
 import { createUser, loadUser } from "./lib/userService";
 import "./App.css";
 
@@ -17,11 +17,22 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
+  getHeaderTexts = () => {
+    return [{ id: 1, name: "Form" }, { id: 2, name: "Review" }, { id: 3, name: "Final" }
+    ];
+  }
+
+  isFormFilledIn = () => {
+    return this.state.userName.trim().length > 0
+      && this.state.userCompany.trim().length > 0
+      && this.state.isChecked;
+  }
+
+  componentDidMount = () => {
     let storedId = sessionStorage.getItem("userId");
     if (storedId) {
       loadUser(storedId).then(user => {
-        if (user && window.location.pathname.startsWith("/final")) {
+        if (user && window.location.pathname.endsWith("/final")) {
           this.setState({
             id: user.id,
             userName: user.name,
@@ -34,27 +45,21 @@ class App extends Component {
   };
 
   handleNameInputChange = (evt) => {
-    if (!window.location.pathname.startsWith("/final")) {
-      this.setState({
-        userName: evt.target.value
-      })
-    }
+    this.setState({
+      userName: evt.target.value
+    })
   };
 
   handleCompanyInputChange = (evt) => {
-    if (!window.location.pathname.startsWith("/final")) {
-      this.setState({
-        userCompany: evt.target.value
-      })
-    }
+    this.setState({
+      userCompany: evt.target.value
+    })
   };
 
   handleCheckboxChange = () => {
-    if (!window.location.pathname.startsWith("/final")) {
-      this.setState({
-        isChecked: !this.state.isChecked
-      })
-    }
+    this.setState({
+      isChecked: !this.state.isChecked
+    })
   };
 
   preventPageRefresh = (evt) => {
@@ -72,75 +77,43 @@ class App extends Component {
     createUser(user);
   };
 
-  renderFinalView = ({ isChecked }) => {
-    return (
-      <FormCheckbox
-        handleCheckboxChange={this.handleCheckboxChange}
-        checked={isChecked}
-        checkBoxText={"I agree to the terms of service"}
-      />
-    )
-  };
-
   render() {
-    const headerTexts = [
-      { id: 1, name: "Form" },
-      { id: 2, name: "Review" },
-      { id: 3, name: "Final" }
-    ];
-    const isFormFilledIn =
-      this.state.userName.trim().length > 0
-      && this.state.userCompany.trim().length > 0
-      && this.state.isChecked;
-
     return (
       <Router>
         <div className="App">
-          <FormHeader headerTexts={headerTexts}></FormHeader>
-          <div className="content">
-            <FormInput
-              handleInputChange={this.handleNameInputChange}
+          <Route exact={true} path="/" render={() => (
+            <FormPage
+              appState={this.state}
+              handleNameInputChange={this.handleNameInputChange}
+              handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
-              placeholder="Your name"
-              labelText="Name"
-              value={this.state.userName}>
-            </FormInput>
-            <FormInput
-              handleInputChange={this.handleCompanyInputChange}
+              handleClick={this.isFormFilledIn()}
+              headerTexts={this.getHeaderTexts()}
+              handleCheckboxChange={this.handleCheckboxChange}
+            ></FormPage>
+          )} />
+
+          <Route exact={true} path="/review" render={() => (
+            <ReviewPage
+              appState={this.state}
+              handleNameInputChange={this.handleNameInputChange}
+              handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
-              placeholder="Your company"
-              labelText="Company"
-              value={this.state.userCompany}>
-            </FormInput>
+              handleClick={this.isFormFilledIn()}
+              headerTexts={this.getHeaderTexts()}
+            ></ReviewPage>
+          )} />
 
-            <Route exact={true} path="/" render={() => (
-              <div>
-                <FormCheckbox
-                  handleCheckboxChange={this.handleCheckboxChange}
-                  checked={this.state.isChecked}
-                  checkBoxText={"I agree to the terms of service"}
-                />
-                <Link to="/review">
-                  <FormButton disabled={!isFormFilledIn} buttonText="Review"></FormButton>
-                </Link>
-              </div>
-            )} />
-
-            <Route path="/review" render={() => (
-              <div className="button-section">
-                <Link to="/final">
-                  <FormButton disabled={!isFormFilledIn} handleClick={this.submitUser} buttonText="Submit"></FormButton>
-                </Link>
-                <div className="back-button">
-                  <Link to="/">
-                    <FormButton buttonText="Back"></FormButton>
-                  </Link>
-                </div>
-              </div>
-            )} />
-
-            <Route path="/final" render={() => (this.renderFinalView(this.state))} />
-          </div>
+          <Route exact={true} path="/final" render={() => (
+            <FinalPage
+              appState={this.state}
+              handleNameInputChange={() => { }}
+              handleCompanyInputChange={() => { }}
+              handleSubmit={this.preventPageRefresh}
+              headerTexts={this.getHeaderTexts()}
+              handleCheckboxChange={() => { }}
+            ></FinalPage>
+          )} />
         </div>
       </Router>
     );

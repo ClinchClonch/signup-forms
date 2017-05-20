@@ -39,7 +39,7 @@ export class FormInput extends Component {
 FormInput.propTypes = {
     labelText: PropTypes.string,
     handleSubmit: PropTypes.func,
-    handleInputChange: PropTypes.func.isRequired,
+    handleInputChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.string.isRequired
 };
