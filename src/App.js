@@ -34,21 +34,27 @@ class App extends Component {
   };
 
   handleNameInputChange = (evt) => {
-    this.setState({
-      userName: evt.target.value
-    })
+    if (window.location.pathname === "/") {
+      this.setState({
+        userName: evt.target.value
+      })
+    }
   };
 
   handleCompanyInputChange = (evt) => {
-    this.setState({
-      userCompany: evt.target.value
-    })
+    if (window.location.pathname === "/") {
+      this.setState({
+        userCompany: evt.target.value
+      })
+    }
   };
 
   handleCheckboxChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked
-    })
+    if (window.location.pathname === "/") {
+      this.setState({
+        isChecked: !this.state.isChecked
+      })
+    }
   };
 
   preventPageRefresh = (evt) => {
@@ -73,7 +79,7 @@ class App extends Component {
         checked={isChecked}
         checkBoxText={"I agree to the terms of service"}
       />
-      )
+    )
   };
 
   render() {

@@ -25,10 +25,12 @@ To start the application, run the following in the project root:
 This is a work in progress and is not yet complete.
 
 ### Major functionality remaining
-Fix validation of input fields and the checkbox, preventing button clicks unless input fields.trim().length > 1 and isChecked === true.
+
 Write unit tests.
+
 Replace the mock database json-server with a proper MongoDB setup.
 
 ### Minor functionality remaining
-Style the application according to design, especially move buttons to correct places and track the current active stage in the header by changing the border-bottom to another color for the active view.
+Style it by moving buttons to correct locations and track the current active stage in the header by changing the border-bottom to another color for the active view.
 
+Prevent users from editing the text fields in any view but the first.
