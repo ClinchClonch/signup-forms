@@ -34,7 +34,7 @@ class App extends Component {
   };
 
   handleNameInputChange = (evt) => {
-    if (window.location.pathname === "/") {
+    if (!window.location.pathname.startsWith("/final")) {
       this.setState({
         userName: evt.target.value
       })
@@ -42,7 +42,7 @@ class App extends Component {
   };
 
   handleCompanyInputChange = (evt) => {
-    if (window.location.pathname === "/") {
+    if (!window.location.pathname.startsWith("/final")) {
       this.setState({
         userCompany: evt.target.value
       })
@@ -50,7 +50,7 @@ class App extends Component {
   };
 
   handleCheckboxChange = () => {
-    if (window.location.pathname === "/") {
+    if (!window.location.pathname.startsWith("/final")) {
       this.setState({
         isChecked: !this.state.isChecked
       })
