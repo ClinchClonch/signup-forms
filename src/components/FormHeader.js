@@ -7,13 +7,13 @@ export class FormHeader extends Component {
             height: 50,
             backgroundColor: "#1874CD",
             boxShadow: "0px 5px 4px #BDBDBD"
-        }
+        };
 
         const ulStyles = {
             height: "100%",
             display: "flex",
             padding: 0
-        }
+        };
 
         const liStyles = {
             width: "33.333%",
@@ -23,7 +23,7 @@ export class FormHeader extends Component {
             color: "#FAFAFA",
             fontSize: 18,
             fontWeight: "bold"
-        }
+        };
 
         return (
             <div className="form-header" style={headerStyles}>

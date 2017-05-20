@@ -5,7 +5,7 @@ export class FormCheckbox extends Component {
     render() {
         const textStyles = {
             fontSize: 16
-        }
+        };
 
         return (
             <div className="form-checkbox">

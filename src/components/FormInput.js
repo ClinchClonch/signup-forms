@@ -6,10 +6,10 @@ export class FormInput extends Component {
         const formLabelStyles = {
             fontSize: 14,
             fontFamily: "Calibri"
-        }
+        };
 
         const formInputStyles = {
-            width: "95%",
+            width: "100%",
             fontSize: 18,
             border: "none",
             outline: "none",
@@ -18,7 +18,7 @@ export class FormInput extends Component {
             borderBottomWidth: 2,
             backgroundColor: "#EEEEEE",
             color: "grey"
-        }
+        };
 
         return (
             <div className="form-input">

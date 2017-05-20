@@ -10,7 +10,7 @@ export class FormButton extends Component {
             width: 80,
             backgroundColor: "#FAFAFA",
             boxShadow: "0px 2px 2px #BDBDBD"
-        }
+        };
 
         return (
             <button type="button"

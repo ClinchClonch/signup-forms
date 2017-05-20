@@ -17,13 +17,8 @@
     top: 35px;
 }
 
-.form-checkbox label {
-    display: flex;
-    float: left;
-}
-
 .form-checkbox input {
-    margin-right: 15px;
+    margin-right: 10px;
     float: right;
     
 }
@@ -41,4 +36,12 @@
 .form-button {
     position: relative;
     top: 80px;
+}
+
+.back-button {
+    float: left;
+}
+
+.button-section {
+    padding-top:5%;
 }

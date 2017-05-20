@@ -127,13 +127,15 @@ class App extends Component {
             )} />
 
             <Route path="/review" render={() => (
-              <div>
+              <div className="button-section">
                 <Link to="/final">
                   <FormButton disabled={!isFormFilledIn} handleClick={this.submitUser} buttonText="Submit"></FormButton>
                 </Link>
-                <Link to="/">
-                  <FormButton buttonText="Back"></FormButton>
-                </Link>
+                <div className="back-button">
+                  <Link to="/">
+                    <FormButton buttonText="Back"></FormButton>
+                  </Link>
+                </div>
               </div>
             )} />
 
