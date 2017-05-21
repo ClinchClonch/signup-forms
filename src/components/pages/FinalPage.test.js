@@ -1,5 +1,5 @@
 import React from "react";
-import { FinalPage } from "./FinalPage";
+import { FinalPage } from "./";
 import { shallow } from "enzyme";
 
 describe("When FinalPage renders", () => {
