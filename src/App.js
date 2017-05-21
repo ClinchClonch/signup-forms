@@ -17,12 +17,6 @@ class App extends Component {
     }
   };
 
-  isFormFilledIn = () => {
-    return this.state.userName.trim().length > 0
-      && this.state.userCompany.trim().length > 0
-      && this.state.isChecked;
-  }
-
   componentDidMount = () => {
     let storedId = sessionStorage.getItem("userId");
     if (storedId) {
@@ -73,6 +67,12 @@ class App extends Component {
   };
 
   render() {
+    const isFormFilledOut = () => {
+      return this.state.userName.trim().length > 0
+        && this.state.userCompany.trim().length > 0
+        && this.state.isChecked;
+    };
+
     return (
       <Router>
         <div className="App">
@@ -83,7 +83,7 @@ class App extends Component {
               handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
               handleCheckboxChange={this.handleCheckboxChange}
-              disabled={this.isFormFilledIn()}
+              disabled={isFormFilledOut()}
             ></FormPage>
           )} />
 
@@ -94,7 +94,7 @@ class App extends Component {
               handleCompanyInputChange={this.handleCompanyInputChange}
               handleSubmit={this.preventPageRefresh}
               handleClick={this.submitUser}
-              disabled={this.isFormFilledIn()}
+              disabled={isFormFilledOut()}
             ></ReviewPage>
           )} />
 
@@ -105,7 +105,7 @@ class App extends Component {
               handleCompanyInputChange={() => { }}
               handleSubmit={this.preventPageRefresh}
               handleCheckboxChange={() => { }}
-              disabled={this.isFormFilledIn()}
+              disabled={isFormFilledOut()}
             ></FinalPage>
           )} />
         </div>
