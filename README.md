@@ -18,7 +18,10 @@ To start the application, run the following in the project root:
 
 ### `npm run start`
 
+### Run unit tests
+To run the unit tests, run the following in the project root:
 
+### `npm run test`
 
 ## Disclaimer
 
