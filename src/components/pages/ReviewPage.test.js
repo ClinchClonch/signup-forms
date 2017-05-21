@@ -4,8 +4,8 @@ import { shallow } from "enzyme";
 
 describe("When ReviewPage renders", () => {
     const appState = {
-        userName: "Bob",
-        userCompany: "Foo Company"
+        userName: "",
+        userCompany: ""
     };
     const props = {
         handleNameInputChange: () => { },
