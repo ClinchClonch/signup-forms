@@ -9,9 +9,9 @@ export const createUser = (user) => {
         },
         body: JSON.stringify(user)
     }).then(res => res.json())
-}
+};
 
 export const getUser = (id) => {
     return fetch(baseUrl + id)
         .then(res => res.json())
-}
+};
