@@ -5,7 +5,6 @@ export class FormButton extends Component {
     render() {
         const buttonStyles = {
             fontSize: 16,
-            color: "#424242",
             lineHeight: "32px",
             width: 80,
             backgroundColor: "#FAFAFA",
