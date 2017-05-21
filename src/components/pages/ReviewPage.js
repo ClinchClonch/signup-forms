@@ -45,14 +45,14 @@ export class ReviewPage extends Component {
           <div className="button-section">
             <div className="back-button">
               <Link to="/">
-            <FormButton 
-              buttonText="Back">
-            </FormButton>
+                <FormButton
+                  buttonText="Back">
+                </FormButton>
               </Link>
             </div>
           </div>
           <Link to="/final">
-            <FormButton 
+            <FormButton
               disabled={!this.props.disabled}
               handleClick={this.props.handleClick}
               buttonText="Submit">
