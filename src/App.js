@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { FormPage, ReviewPage, FinalPage } from "./components/pages";
-import { createUser, loadUser } from "./lib/userService";
+import { createUser, getUser } from "./lib/userService";
 import "./App.css";
 
 const uuid = require("uuid/v1")
@@ -18,9 +18,9 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    let storedId = sessionStorage.getItem("userId");
+    const storedId = sessionStorage.getItem("userId");
     if (storedId) {
-      loadUser(storedId).then(user => {
+      getUser(storedId).then(user => {
         if (user && window.location.pathname.startsWith("/final")) {
           this.setState({
             id: user.id,

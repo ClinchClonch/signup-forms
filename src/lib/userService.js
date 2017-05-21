@@ -11,7 +11,7 @@ export const createUser = (user) => {
     }).then(res => res.json())
 }
 
-export const loadUser = (id) => {
+export const getUser = (id) => {
     return fetch(baseUrl + id)
         .then(res => res.json())
 }
