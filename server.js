@@ -28,7 +28,7 @@ app.post("/users", function (req, res) {
     };
     User.create(user, function (err, user) {
         if (err) {
-            return;
+            console.error(err);
         }
     })
 });
@@ -36,7 +36,7 @@ app.post("/users", function (req, res) {
 app.get('/users', function (req, res) {
     User.find().exec(function (err, doc) {
         if (err) {
-            return;
+            console.error(err);
         }
         res.send(doc);
     })
@@ -45,7 +45,7 @@ app.get('/users', function (req, res) {
 app.get("/users/:id", function (req, res) {
     User.findById(req.params.id, function (err, doc) {
         if (err) {
-            return;
+            console.error(err);
         }
         res.send(doc);
     })
