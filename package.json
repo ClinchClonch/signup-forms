@@ -1,30 +1,32 @@
 {
-    "name": "signup-forms",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-      "body-parser": "^1.17.2",
-      "cors": "^2.8.3",
-      "enzyme": "^2.8.2",
-      "express": "^4.15.3",
-      "mongoose": "^4.10.0",
-      "prop-types": "^15.5.10",
-      "react": "^15.5.4",
-      "react-addons-test-utils": "^15.5.1",
-      "react-dom": "^15.5.4",
-      "react-router-dom": "^4.1.1",
-      "react-types": "^0.1.0",
-      "uuid": "^3.0.1",
-      "whatwg-fetch": "^2.0.3"
-    },
-    "devDependencies": {
-      "react-scripts": "0.9.5"
-    },
-    "scripts": {
-      "start": "react-scripts start",
-      "build": "react-scripts build",
-      "test": "react-scripts test --env=jsdom",
-      "eject": "react-scripts eject",
-      "server": "mongoimport --db simple --collection users --jsonArray data.js"
-    }
+  "name": "signup-forms",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "enzyme": "^2.8.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "react-types": "^0.1.0",
+    "uuid": "^3.0.1",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.1",
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "server": "mongoimport --db simple --collection users --jsonArray data.js"
+  }
 }

@@ -32,9 +32,9 @@ export class FormInput extends Component {
                     />
                 </form>
             </div>
-        )
+        );
     }
-};
+}
 
 FormInput.propTypes = {
     labelText: PropTypes.string,

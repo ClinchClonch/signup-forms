@@ -19,9 +19,9 @@ export class FormButton extends Component {
                 style={buttonStyles}>
                 {this.props.buttonText}
             </button>
-        )
+        );
     }
-};
+}
 
 FormButton.propTypes = {
     disabled: PropTypes.bool,

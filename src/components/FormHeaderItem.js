@@ -16,7 +16,7 @@ export class FormHeaderItem extends Component {
 
         return (
           <li style={styles}>{this.props.text}</li>
-        )
+        );
     }
 }
 

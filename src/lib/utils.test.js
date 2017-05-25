@@ -6,6 +6,6 @@ test("headerTexts should return an object consisting of the call's arguments", (
         first: "foo",
         second: "bar",
         third: "baz"
-    }
+    };
     expect(result).toEqual(expected);
 });

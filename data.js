@@ -11,4 +11,4 @@
         "company": "Fantastic company",
         "acceptedTerms": true
     }
-]
+];

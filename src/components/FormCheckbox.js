@@ -14,9 +14,9 @@ export class FormCheckbox extends Component {
                     onChange={this.props.handleCheckboxChange}
                     checked={this.props.checked} />
             </div>
-        )
+        );
     }
-};
+}
 
 FormCheckbox.propTypes = {
     checkBoxText: PropTypes.string,

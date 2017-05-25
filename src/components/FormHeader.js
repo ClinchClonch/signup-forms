@@ -33,7 +33,7 @@ export class FormHeader extends Component {
                     </FormHeaderItem>
                 </ul>
             </div>
-        )
+        );
     }
 }
 

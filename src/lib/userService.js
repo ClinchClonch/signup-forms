@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080/users/"
+const baseUrl = "http://localhost:8080/users/";
 
 export const createUser = (user) => {
     return fetch(baseUrl, {
@@ -8,10 +8,10 @@ export const createUser = (user) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
-    }).then(res => res.json())
+    }).then(res => res.json());
 };
 
 export const getUser = (id) => {
     return fetch(baseUrl + id)
-        .then(res => res.json())
+        .then(res => res.json());
 };
