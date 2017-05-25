@@ -3,7 +3,8 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jest/globals": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -23,6 +24,10 @@
         "valid-typeof": "warn",
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/valid-expect": "error",
         "indent": [
             "error",
             4
@@ -41,6 +46,7 @@
         ]
     },
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ]
 }
